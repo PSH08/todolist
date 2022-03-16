@@ -1,5 +1,10 @@
-const week = document.getElementById('week')
-const today = document.querySelector('.today')
+const week = document.getElementById('week');
+const today = document.getElementById('today');
+const btn = document.getElementById('plus');
+const cont = document.querySelector('.container');
+const form = document.querySelector('#form_cont');
+const formInput = document.querySelector('#form_cont input');
+const list = document.getElementById('list');
 
 function days() {
   let date = new Date();
@@ -17,3 +22,37 @@ function weeks() {
   week.innerText = `${weeks[days]}요일`
 }
 weeks()
+
+function lists() {
+  let value = formInput.value;
+  let li = document.createElement('li');
+  let span = document.createElement('span');
+  let button = document.createElement('button');
+  list.appendChild(li);
+  li.appendChild(span);
+  li.appendChild(button);
+  button.innerText = 'X'
+  button.className = 'x_btn'
+  span.innerText = value;
+}
+form.addEventListener('submit', lists);
+
+function formValue(e) {
+  e.preventDefault();
+  let value = formInput.value;
+  formInput.value = '';
+}
+form.addEventListener('submit', formValue);
+
+function minus() {
+  if(btn.className === '') {
+    btn.innerText = '-';
+    btn.classList.add('minus');
+    form.classList.remove('hidden');
+  }else {
+    btn.innerText = '+';
+    btn.classList.remove('minus');
+    form.classList.add('hidden');
+  }
+}
+btn.addEventListener('click', minus);
