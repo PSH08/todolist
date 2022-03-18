@@ -23,6 +23,11 @@ function weeks() {
 }
 weeks()
 
+function deleteLi(e) {
+  let li = e.target.parentElement;
+  li.remove()
+}
+
 function lists() {
   let value = formInput.value;
   let li = document.createElement('li');
@@ -34,12 +39,13 @@ function lists() {
   button.innerText = 'X'
   button.className = 'x_btn'
   span.innerText = value;
+  button.addEventListener('click',deleteLi)
 }
 form.addEventListener('submit', lists);
 
 function formValue(e) {
   e.preventDefault();
-  let value = formInput.value;
+  // let value = formInput.value;
   formInput.value = '';
 }
 form.addEventListener('submit', formValue);
@@ -56,3 +62,5 @@ function minus() {
   }
 }
 btn.addEventListener('click', minus);
+
+
