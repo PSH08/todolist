@@ -6,6 +6,7 @@ const form = document.querySelector('#form_cont');
 const formInput = document.querySelector('#form_cont input');
 const list = document.getElementById('list');
 
+// 요일
 function days() {
   let date = new Date();
   let years = date.getFullYear();
@@ -15,6 +16,7 @@ function days() {
 }
 days()
 
+// 요일
 function weeks() {
   let date = new Date();
   let weeks = ['일', '월', '화', '수', '목', '금', '토'];
@@ -28,6 +30,7 @@ function deleteLi(e) {
   li.remove()
 }
 
+// input 입력에서 받은거 li로 넣기
 function lists() {
   let value = formInput.value;
   let li = document.createElement('li');
@@ -37,12 +40,12 @@ function lists() {
   li.appendChild(span);
   li.appendChild(button);
   button.innerText = 'X'
-  button.className = 'x_btn'
   span.innerText = value;
-  button.addEventListener('click',deleteLi)
+  button.addEventListener('click',deleteLi);
 }
 form.addEventListener('submit', lists);
 
+// input입력
 function formValue(e) {
   e.preventDefault();
   // let value = formInput.value;
@@ -50,6 +53,7 @@ function formValue(e) {
 }
 form.addEventListener('submit', formValue);
 
+// +버튼 -버튼
 function minus() {
   if(btn.className === '') {
     btn.innerText = '-';
@@ -62,5 +66,3 @@ function minus() {
   }
 }
 btn.addEventListener('click', minus);
-
-
